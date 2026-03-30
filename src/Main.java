@@ -32,6 +32,8 @@ public class Main {
                 case 0:
                     Position position = new Position();
                     System.out.println(position.allLines);
+                    System.out.println(position);
+                    System.out.println("-------------------");
                     break;
                 case 1:
                     employeeFunctions.printEmployeeInfo();

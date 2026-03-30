@@ -36,6 +36,7 @@ public class Position {
         }
         // If file is just spaces or empty - ignore it & load normally
         loadFullFile();
+        setPositionValues();
     }
 
     /**
@@ -44,6 +45,7 @@ public class Position {
     public Position() {
         // Default constructor to load default file
         loadFullFile();
+        setPositionValues();
     }
 
     /**
@@ -57,4 +59,52 @@ public class Position {
         }
     }
 
+    /**
+     * Loads all the Position's Values into their appropriate class variables.
+     */
+    void setPositionValues() {
+        for (int  i = 0; i < allLines.size(); i++) {
+            System.out.println(i + ": " + allLines.get(i));
+            if (!allLines.get(i).trim().startsWith("-")) {
+                // Starts with "-" it's a new position but skip for now
+                switch (i) {
+                    // We could also just skip by starting with 1 (ignore 0) but...
+                    case 1:
+                        title = allLines.get(i).trim().toLowerCase();
+                        break;
+                    case 2:
+                        desc = allLines.get(i).trim().toLowerCase();
+                        break;
+                    case 3:
+                        salary = Long.parseLong(allLines.get(i).trim());
+                        break;
+                    case 4:
+                        manager = allLines.get(i).equalsIgnoreCase("true");
+                        break;
+                    case 5:
+                        degrees = allLines.get(i).trim().toLowerCase();
+                        break;
+                    case 6:
+                        experience = Integer.parseInt(allLines.get(i).trim());
+                        break;
+                    case 7:
+                        certs = allLines.get(i).trim().toLowerCase();
+                        break;
+                }
+            }
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Position{" +
+                "title='" + title + '\'' +
+                ", desc='" + desc + '\'' +
+                ", salary=" + salary +
+                ", manager=" + manager +
+                ", degrees='" + degrees + '\'' +
+                ", experience=" + experience + " years" +
+                ", certs='" + certs + '\'' +
+                '}';
+    }
 }
