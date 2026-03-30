@@ -1,10 +1,14 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Position {
     private String filepath = "data/SinglePosition.txt";
+
+    // Added to hold all lines of the file
+    public List<String> allLines = new ArrayList<>();
 
     public String title = "";
     public String desc = "";
@@ -30,22 +34,27 @@ public class Position {
             // Set filepath with default directory of data (again if not empty)
             filepath = "data/"  + newFile;
         }
-        // If file is just spaces or empty - ignore it
-    }
-
-    public Position() {
-        // Default constructor to load default file
+        // If file is just spaces or empty - ignore it & load normally
+        loadFullFile();
     }
 
     /**
-     * This is used just to load the FullFile for debugging and simple display.
-     * Also used internally to load file for processing.
-     *
-     * @return A list of strings of the Full File
-     * @throws IOException Throws IOException if the file is not found or cannot be read.
+     * Loads information for Position from default directory.
      */
-    public List<String> loadFullFile() throws IOException {
-        return Files.readAllLines(Paths.get(filepath));
+    public Position() {
+        // Default constructor to load default file
+        loadFullFile();
+    }
+
+    /**
+     * This is used just to internally to load file for processing (into class Variable).
+     */
+    private void loadFullFile() {
+        try {
+            allLines = Files.readAllLines(Paths.get(filepath));
+        } catch (IOException e) {
+            System.out.println("Error loading file: " + e.getMessage());
+        }
     }
 
 }
