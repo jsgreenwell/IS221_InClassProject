@@ -1,0 +1,24 @@
+----------------------------------------
+Software Engineer II
+A Software Engineer II or Senior Software Engineer will be required to work on small to medium sized programming tasks independently but still may need guidance on larger or more complex issues. They will be put in a reviewer and mentoring position but will not typically have management or leadership responsibilities beyond this.
+157000
+false
+BS Computer Science, BS Information Systems
+3
+None
+----------------------------------------
+Cybersecurity Analyst I
+A Cybersecurity Analyst I (often SOC Analyst) monitors security alerts, investigates potential incidents, and follows established procedures to identify and respond to threats. This role focuses on learning tools, documentation, and escalation processes rather than independent decision-making.
+105000
+false
+BS Cybersecurity, BS Computer Science, BS Information Systems
+0
+Security+, CySA+
+----------------------------------------
+Cybersecurity Analyst Lead
+A Cybersecurity Analyst Lead performs deeper incident analysis (persistent threat discovery, digital forensics, etc.), threat hunting, and pentesting based on the vulnerability and other assessments of their junior peers. They are responsible for leading and mentor junior analysts and are an active part of policy planning at a corporate level.
+165000
+true
+BS Cybersecurity, BS Computer Science, BS Information Systems, BS Management of Information Systems
+5
+Security+, CySA+, SSCP

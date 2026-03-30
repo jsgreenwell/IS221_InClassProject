@@ -1,9 +1,10 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 // Main will simply run the menu and "app loop"
 // See individual classes for their descriptions
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // Scanner option to take in choice (for 25+ can use IO)
         // final = immutable as it's always a Scanner object
         final Scanner scan = new Scanner(System.in);
@@ -28,6 +29,10 @@ public class Main {
                     """);
             short choice = Short.parseShort(scan.nextLine());
             switch (choice) {
+                case 0:
+                    Position position = new Position();
+                    System.out.println(position.loadFullFile());
+                    break;
                 case 1:
                     employeeFunctions.printEmployeeInfo();
 
