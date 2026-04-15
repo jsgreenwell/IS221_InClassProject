@@ -1,8 +1,10 @@
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Position {
     private String filepath = "data/SinglePosition.txt";
@@ -62,7 +64,7 @@ public class Position {
     /**
      * Loads all the Position's Values into their appropriate class variables.
      */
-    void setPositionValues() {
+    private void setPositionValues() {
         for (int  i = 0; i < allLines.size(); i++) {
             System.out.println(i + ": " + allLines.get(i));
             if (!allLines.get(i).trim().startsWith("-")) {
@@ -92,6 +94,21 @@ public class Position {
                         break;
                 }
             }
+        }
+    }
+
+    public void setNewPosition() throws IOException {
+        final String[] fields = {"title",  "desc", "salary", "manager", "degrees", "experience", "certs"};
+        Scanner scan = new Scanner(System.in);
+
+        for (final String f : fields) {
+            System.out.println("Please enter the new " + f + "value: ");
+            String newValue = scan.nextLine();
+
+            Files.write(Paths.get("data/newfile.txt"),
+                    (newValue.trim() + "\n").getBytes(),
+                    StandardOpenOption.APPEND, StandardOpenOption.CREATE
+            );
         }
     }
 
