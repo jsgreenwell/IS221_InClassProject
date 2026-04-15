@@ -102,7 +102,11 @@ public class Clients {
                 empReviews.put("count", empReviews.get("count") + 1);
                 empReviews.put(String.format("rating%d", empReviews.get("count")),
                         (long) review.reviewRating);
-                empReviews.put("total", (long) review.reviewRating + empReviews.get("total"));
+                if (empReviews.containsKey("total")) {
+                    empReviews.put("total", (long) review.reviewRating + empReviews.get("total"));
+                } else {
+                    empReviews.put("total", (long) review.reviewRating);
+                }
             }
 
             // calculate out sum of reviews & count of reviews
