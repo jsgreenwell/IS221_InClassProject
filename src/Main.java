@@ -25,6 +25,7 @@ public class Main {
                         5 Display Services
                         6 Client Bills
                         7 Client Reviews
+                        8 Display Department Information
                         9 Exit this program
                     """);
             short choice = Short.parseShort(scan.nextLine());
@@ -84,6 +85,11 @@ public class Main {
                 case 7:
                     clients.reviews();
                     break;
+                case 8:
+                    Departments depts = new Departments();
+                    while(depts.running) {
+                        depts.run();
+                    }
                 case 9:
                     run = false;
                     break;
