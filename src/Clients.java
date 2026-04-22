@@ -86,53 +86,43 @@ public class Clients {
         int counter = 0;
         int ratingSum = 0; // ratings between 1 & 10
 
+        // This map will hold employee ratings (id & rating score)
+        Map<String, Long> empReviews = new HashMap<>();
+        empReviews.put("employeeID", 201L);
+        empReviews.put("total", 0L);
+        empReviews.put("count", 0L);
+
         System.out.println("Reviews (with transaction #, client name, & text of review):");
         for  (Reviews review : reviews) {
             System.out.println("\t------------------------------------------------------------------------");
             System.out.println("\t" + review.clientName + " " + review.reviewText);
             System.out.println("\t------------------------------------------------------------------------");
 
-            // Get the Individual Results of the review
-            getIndividualReviews("employee", 201L, review);
-            getIndividualReviews("client", 301L, review);
+            if (review.employeeID == 201) {
+                empReviews.put("count", empReviews.get("count") + 1);
+                empReviews.put(String.format("rating%d", empReviews.get("count")),
+                        (long) review.reviewRating);
+                if (empReviews.containsKey("total")) {
+                    empReviews.put("total", (long) review.reviewRating + empReviews.get("total"));
+                } else {
+                    empReviews.put("total", (long) review.reviewRating);
+                }
+            }
 
             // calculate out sum of reviews & count of reviews
             ratingSum += review.reviewRating;
             counter++;
         }
 
-        System.out.printf("The average rating is %.2f\n", ratingSum * 1.0/counter);
-    }
-
-    private void getIndividualReviews(String personType, long id, Reviews review) {
-        // This will loop through the reviews and pull out the reviews for a specific employee or client
-        // This map will hold employee ratings (id & rating score)
-        Map<String, Long> empReviews = new HashMap<>();
-        empReviews.put("ID", id);
-        empReviews.put("total", 0L);
-        empReviews.put("count", 0L);
-
-        if (personType.equals("employee")) {
-            if (review.employeeID == 201) {
-                empReviews.put("count", empReviews.get("count") + 1);
-                empReviews.put(String.format("rating%d_%s", empReviews.get("count"), review.clientID),
-                        (long) review.reviewRating);
-                empReviews.put("total", (long) review.reviewRating + empReviews.get("total"));
-            }
-
-        }
-
-        System.out.printf("The average rating is for %d is %.2f\n",
+        System.out.printf("The average rating is %.2f", ratingSum * 1.0/counter);
+        System.out.printf("The average rating is for %d is %.2f",
                 empReviews.get("employeeID"),
                 empReviews.get("total") * 1.0/empReviews.get("count"));
 
         // Let's review that employee's ratings:
         for (String key : empReviews.keySet()) {
-            System.out.println(key + " : with value : "
-                    + empReviews.get(key));
+            System.out.println(key + " : with value : " + empReviews.get(key));
         }
-
-
     }
 
     private List<Reviews> createReviews() {
