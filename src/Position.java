@@ -25,7 +25,7 @@ public class Position {
     public String certs = "None";
 
     /**
-     * This loads the information for the Position(s) being added to Employee.
+     * This loads the information for the Position(s) being added to HumanResources.Employee.
      * @param newFile A file name (default directory) or a full filepath to load info from.
      */
     public Position(String newFile) {

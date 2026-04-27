@@ -1,3 +1,8 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -8,9 +13,13 @@ public class Departments {
     public boolean running = true;
 
     private final Map<Integer, String> options = Map.of(
-            1, "Display All Department Contact Information",
-            2, "Search for and display a department's contact information",
-            3, "Display Department Services"
+        1, "Display All Department Contact Information",
+        2, "Search for and display a department's contact information",
+        3, "Display Department Services"
+    );
+
+    private final Map<String, List<String>> departments = Map.of(
+    "Human Resources", List.of("🧑‍💼", "+1-800-555-0101", "hr@company.com")
     );
 
     public void run() {
@@ -44,6 +53,13 @@ public class Departments {
             choice = Integer.parseInt(scan.nextLine());
         } catch (NumberFormatException e) {
             System.out.println("Please enter a valid number");
+            try {
+                Files.write(Path.of("data/dept_errors.log"),
+                        "User Entered Invalid Number".getBytes(),
+                        StandardOpenOption.APPEND);
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
             // loop through or retry
         }
         return choice;

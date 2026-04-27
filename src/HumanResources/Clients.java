@@ -1,3 +1,5 @@
+package HumanResources;
+
 import java.util.*;
 
 public class Clients {
@@ -51,7 +53,7 @@ public class Clients {
     }
 
     // Yes you can set up a Class within a Class - this is composition
-    // Cause its inside Clients.java - no encapsulation (it sets up same as Clients)
+    // Cause its inside HumanResources.Clients.java - no encapsulation (it sets up same as HumanResources.Clients)
     private static class Reviews {
         long employeeID;
         long clientID;
@@ -130,12 +132,12 @@ public class Clients {
         return Arrays.asList(
                 new Reviews(100001L, 201L, 301L, "Alice Carter", "Great service and very friendly.", (short) 5),
                 new Reviews(100002L, 202L, 302L, "Bob Nguyen", "Quick checkout and helpful staff.", (short) 4),
-                new Reviews(100003L, 203L, 303L, "Carlos Mendez", "Employee answered all my questions.", (short) 5),
+                new Reviews(100003L, 203L, 303L, "Carlos Mendez", "HumanResources.Employee answered all my questions.", (short) 5),
                 new Reviews(100004L, 201L, 304L, "Dana Wells", "Clean store and good selection.", (short) 4),
                 new Reviews(100005L, 202L, 305L, "Evan Brooks", "Had to wait a bit longer than expected.", (short) 3),
                 new Reviews(100006L, 203L, 306L, "Fatima Ali", "Very polite and professional service.", (short) 5),
                 new Reviews(100007L, 201L, 307L, "George Kim", "Checkout was smooth and fast.", (short) 4),
-                new Reviews(100008L, 202L, 308L, "Hannah Ortiz", "Employee seemed rushed but helpful.", (short) 3),
+                new Reviews(100008L, 202L, 308L, "Hannah Ortiz", "HumanResources.Employee seemed rushed but helpful.", (short) 3),
                 new Reviews(100009L, 203L, 309L, "Ivan Petrov", "Excellent experience overall.", (short) 5),
                 new Reviews(100010L, 201L, 310L, "Julia Stein", "Found everything I needed quickly.", (short) 4),
                 new Reviews(100011L, 202L, 301L, "Alice Carter", "Service was decent this time.", (short) 4),
@@ -144,7 +146,7 @@ public class Clients {
                 new Reviews(100014L, 202L, 304L, "Dana Wells", "Friendly greeting upon arrival.", (short) 4),
                 new Reviews(100015L, 203L, 305L, "Evan Brooks", "Amazing customer support.", (short) 5),
                 new Reviews(100016L, 201L, 306L, "Fatima Ali", "Checkout process could be better.", (short) 3),
-                new Reviews(100017L, 202L, 307L, "George Kim", "Employee went above and beyond.", (short) 5),
+                new Reviews(100017L, 202L, 307L, "George Kim", "HumanResources.Employee went above and beyond.", (short) 5),
                 new Reviews(100018L, 203L, 308L, "Hannah Ortiz", "Store was well organized.", (short) 4),
                 new Reviews(100019L, 201L, 309L, "Ivan Petrov", "Not very satisfied with the service.", (short) 2),
                 new Reviews(100020L, 202L, 310L, "Julia Stein", "Overall a positive experience.", (short) 4)

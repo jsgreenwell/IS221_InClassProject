@@ -1,3 +1,5 @@
+package HumanResources;
+
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
@@ -7,7 +9,7 @@ import java.util.Scanner;
 import static java.lang.Math.round;
 
 /**
- * Employee Class holds data and functions related to employee information.
+ * HumanResources.Employee Class holds data and functions related to employee information.
  * This includes demographics, schedules, and compensation confirmation.
  */
 public class Employee {
@@ -43,7 +45,7 @@ public class Employee {
     }
 
     /**
-     * Allows users to change the Employee info.
+     * Allows users to change the HumanResources.Employee info.
      * Loops to allow them to change one by one as needed.
      */
     public void changeInfo() {

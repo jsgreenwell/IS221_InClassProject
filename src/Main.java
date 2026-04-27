@@ -1,4 +1,6 @@
-import java.io.IOException;
+import HumanResources.Clients;
+import HumanResources.Employee;
+
 import java.util.Scanner;
 
 // Main will simply run the menu and "app loop"
