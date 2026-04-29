@@ -2,12 +2,20 @@ package HumanResources;
 
 import java.util.*;
 
-public class Clients {
+public class Clients extends Person {
     private final String[] SERVICES = {
             "Virus/Malware Removal", "Hardware Repair",
             "Digital Recovery", "Data Backup"
     };
     private final Scanner scanner = new Scanner(System.in);
+
+    public Clients(String firstName, String lastName, String email, String phoneNum) {
+        super(firstName, lastName, email, phoneNum);
+    }
+
+    public Clients() {
+        super();
+    }
 
     /**
      * Displays services available for clients.

@@ -12,20 +12,25 @@ import static java.lang.Math.round;
  * HumanResources.Employee Class holds data and functions related to employee information.
  * This includes demographics, schedules, and compensation confirmation.
  */
-public class Employee {
+public class Employee extends Person {
     // Internal variable for getting input
     private final Scanner input = new Scanner(System.in);
     // Set (final or constant) group of fields
     private final String[] FIELDS = {"name", "email", "phone number", "role", "role type"};
-    // Variables to hold employee basic info
-    protected String name = "Bob";
-    protected String email = "boreily@mu.org";
-    protected String phoneNumber = "2175559389";
+
     protected String role = "Manager";
     protected boolean fullTime = true;
 
     // Dates they are scheduled to work
     protected List<LocalDate> workDates = new ArrayList<>();
+
+    public Employee(String firstName, String lastName, String email, String phoneNum) {
+        super(firstName, lastName, email, phoneNum);
+    }
+
+    public Employee() {
+        super();
+    }
 
     /**
      * Prints out EmployeeInfo in a "pretty" way (line by line).
@@ -36,7 +41,7 @@ public class Employee {
             Email: %s
             Phone: %s
             Role: %s %s
-            """, name, email, phoneNumber, role,
+            """, lastName, email, phoneNum, role,
                 // ternary operator = if/else shortcut
                 fullTime ? "Full Time" : "Part Time");
 
@@ -59,8 +64,8 @@ public class Employee {
 
             switch (input.nextLine().toLowerCase()) {
                 case "name":
-                    System.out.print("Enter Name: ");
-                    name = input.nextLine();
+                    System.out.print("Enter Last Name: ");
+                    lastName = input.nextLine();
                     break;
                 case "email":
                     System.out.print("Enter Email: ");
@@ -68,7 +73,7 @@ public class Employee {
                     break;
                 case "phone": case "phone number":
                     System.out.print("Enter Phone Number: ");
-                    phoneNumber = input.nextLine();
+                    phoneNum = input.nextLine();
                     break;
                 case "role":
                     System.out.print("Enter Role: ");
