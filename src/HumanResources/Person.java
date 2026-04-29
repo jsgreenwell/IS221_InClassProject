@@ -39,7 +39,7 @@ public class Person {
      */
     public Person() {
         // Default constructor to allow for UUID generation
-        ID = UUID.randomUUID().toString().replace("-", "");
+        Person("", "", "", "");
     }
 
     /**
