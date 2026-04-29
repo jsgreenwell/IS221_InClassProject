@@ -5,7 +5,7 @@ import java.util.UUID;
 
 public class Person {
         // Class variables for Person
-        private final String ID;
+        private String ID;
         protected String firstName;
         protected String lastName;
         protected String middleName = "nmn";
@@ -38,8 +38,10 @@ public class Person {
      * May cause exception if not set before use
      */
     public Person() {
-        // Default constructor to allow for UUID generation
-        Person("", "", "", "");
+        // Default constructor to allow for UUID generation and return Object
+        // This is now a wrapper or helper function
+        // As it just alters the passed values and passes them on to another method
+        new Person("", "", "", "");
     }
 
     /**
@@ -64,16 +66,60 @@ public class Person {
         }
     }
 
+    /** I decided on having a protected function
+     * As this allows HR components to use ID but not external packages
+     * They can only verify it.
+     * @return Session UUID as string
+     */
     protected String getID() {
         return ID;
     }
 
-    public boolean verifyID() {
-        return ID.equals(getID().trim());
+    /**
+     * Given an ID - verifies if it matches the current session ID
+     * @param checkID A UUID (without "-") to check
+     * @return True or False based on matching
+     */
+    public boolean verifyID(String checkID) {
+        return ID.equals(checkID.trim());
     }
 
+    /**
+     * Builds a string of the address parts in the format "address, city, state zipcode"
+     * @return Address in standard format
+     */
     public String getAddress() {
         return String.format("%s, %s, %s %s", address, city, state, zipcode);
+    }
+
+    /**
+     * Given an array of the location (city, state or zipcode) - verifies if it matches the current session location
+     * @param location A string array of the city & state or the zipcode alone
+     * @return true if values match person's location
+     */
+    public boolean verifyLocation(String[] location) {
+        if  (location.length == 0) {
+            // Nothing sent - no need to check
+            return false;
+        } else if (location.length == 2) {
+            // must have sent city and state
+            return location[0].trim().equalsIgnoreCase(city) && location[1].trim().equalsIgnoreCase(state);
+        } else {
+            // They sent 1 or more than 2 so just check if zip matches first field
+            // no reason for Ignore Case because its numbers
+            return location[0].trim().equals(zipcode);
+        }
+    }
+
+    /**
+     * Given an integer zipcode - this will verify if it matches
+     * Polymorphism (an overloaded method) as it has the same name but different signature
+     * @param zipcode The integer value of the zipcode
+     * @return true if zipcode matches person's zipcode
+     */
+    public boolean verifyLocation(int zipcode) {
+        // Just check if zipcode matches - could wrap this with above but check is simple
+        return String.valueOf(zipcode).trim().equals(this.zipcode);
     }
 
     /**
